@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# FP and Reducers
+
+## Resources
+
+* Eric Elliott: [Composing Software](https://medium.com/p/fe22f0c39a1d)
+* Kyle Simpson: [Functional Light JS](https://github.com/getify/Functional-Light-JS)
+* Brian Lonsdorf: [Mostly Adequate Guide to Functional Programming](https://mostly-adequate.gitbook.io/mostly-adequate-guide/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

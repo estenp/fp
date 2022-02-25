@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
 
-function App() {
+const initialState = { count: 0 };
+
+const reducer = (
+    state: { count: number },
+    action: { type: string; payload?: number }
+  ) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    case 'custom':
+      return { count: action.payload || state.count };
+    default:
+      throw new Error();
+  }
+};
+
+const Example = () => {
+  // this function is used to manage state, where Array.reduce is used to perform transformations on elements of an array
+  // even the reducer seems different!
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  // const [currentAccumulator, callReducer] = React.useReducer((acc: number, val: number) => acc + val, 0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <div>Count: {state.count}</div>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
 
-export default App;
+      {/* <div>Accumulator: {currentAccumulator}</div>
+      <button onClick={() => callReducer(1)}>Increment</button> */}
+      <input type="number" onChange={e => dispatch({ type: 'custom', payload: parseInt(e.target.value) })} />
+    </>
+  );
+};
+
+export default Example;
